@@ -19,6 +19,25 @@ html_text(comment)
 repair_encoding(html_text(comment))
 #repair_encoding 이 한글깨짐을 방지하게 해줌
 
+#7강
+library(rvest)
+library(httr)
+#class 는 제목을 나타내는 태그 (여러개 존재 가능)
+#id는 전체 문서(페이지)에서 유일하게 존재
+url<-'http://movie.daum.net/moviedetail/moviedetailNetizenPoint.do?movieId=73750'
+urlnaver<-'http://movie.naver.com/movie/bi/mi/point.nhn?code=98438'
+GET(urlnaver)
+read_html(urlnaver)
+response<-GET(url)
+read_html(response)
+htxt<-read_html(response)
+comments = html_nodes(htxt, 'span.comment')
+html_nodes(htxt,'p.desc_review')
+htxt2<-read_html(urlnaver)
+html_nodes(htxt2,'div.score_reple')
+options(java.parameters=c("-Xmx8g", "-Dfile.encoding=UTF-8"))
+
+
 #8강 여러 웹 페이지 한 번에 크롤링 하기 (paste, for, if, break 등)
 
 url_base<-'http://m.movie.daum.net/moviedb/grade?movieId=89869&type=netizen&page='
