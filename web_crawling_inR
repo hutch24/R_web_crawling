@@ -1,7 +1,7 @@
 #R을 이용한 웹 크롤링
 library(httr)
 GET('http://www.w3.org/Protocols/rfc2616/rfc2616.html')
-#GET방식과 POST방식이 있는데, 브라우저의 개발자 도구를 사용하면 POST라도 자료를 가져올 수 있따다.
+#GET방식과 POST방식이 있는데, 브라우저의 개발자 도구를 사용하면 POST라도 자료를 가져올 수 있다
 #GET방식은 URL에 흔적이 남나, POST는 글 작성/로그인 처럼 URL이 변하지 않음
 
 library(rvest)
@@ -17,7 +17,7 @@ titles = html_text(title) #게임 타이틀 이름들만 모아서 저장
 titles #잘 저장되었나 확인
 
 #array는 동일한 유형의 데이터만 저장
-#list는 서로 다른 유형의 데이터도 저장 가능.
+#list는 서로 다른 유형의 데이터도 저장 가능
 
 list.files()
 getwd()
@@ -39,7 +39,7 @@ html_text(comment)
 #class는 .으로 표시, id는 #로 표시시
 html_nodes(hrml,'.#dkbody')
 
-#판 한개 게시물 크롤링.
+#판 한 개 게시물 크롤링
 original = GET('http://pann.nate.com/talk/c20019')
 k = read_html(pan)
 contents = html_node(k,'div#espresso_editor_view')
@@ -68,7 +68,7 @@ pan
 link = html_nodes(pan,'div td.subject a')
 link
 
-#네이트 판 잠 크롤ㄹ
+#네이트 판 '잠'에 관한 글 크롤링
 remDr = remoteDriver(browserName = 'chrome')
 remDr$open()
 remDr$navigate('http://pann.nate.com/talk/c20019')
@@ -80,7 +80,6 @@ link = read_html(link[[1]])
 link = unique(html_attr(html_nodes(link, '.list a'), 'href'))
 str(link)
 paste('address',link)
-
 
 
 
