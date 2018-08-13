@@ -92,7 +92,7 @@ html_text(self)
 GET('www.cgv.co.kr', user_agent('Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0'))
 ua = user_agent('Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0')
 GET('www.cgv.co.kr',ua)
-#사이트에 POST를 통한 로그인 후 쿠기 정보 받
+#사이트에 POST를 통한 로그인 후 쿠기 정보 받기
 res = POST('http://camp.edushare.kr/User/Login',body = list(
   Username = 'hutch24',
   Password = '5lgt0vca!'))
@@ -102,7 +102,7 @@ session = set_cookies(.cookies = unlist(cookies(res)))
 
 res = GET('http://camp.edushare.kr',session)
 
-#네이버에 혼자 해본 것
+#네이버 로그인 연습
 self<-POST('http://nid.naver.com/nidlogin.login' , body = list(
   enctp = '1',
   encpw = '43ddfdbdd44c483e881d0ffff71e3900c5847b144bbadb1823d7f083c2f681fcb825937fe829d0d0a55097d97d34bf47ab580ddc3e48a792a5a688c8dc338321bd1392691e92a31fbb900fd0dd6ce3d220d7e948273fcda85d71ddd5353505084475723fed5c27190a1676aa54f12c0e6dad00b83d55e365337ff057736f4836',
@@ -120,7 +120,7 @@ html_nodes(h , '.btn_inr')#잘 안됨
 html_nodes(h, '.user_info')
 #네이버의 문제인지 잘 안됨
 
-#뉴스기사 크롤링
+#네이버 뉴스기사 크롤링
 news = GET('http://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=101')
 htxt = read_html(news)
 html_nodes(htxt, 'div.list_body.newsflash_body')
